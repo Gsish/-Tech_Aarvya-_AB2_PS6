@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* src/styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 * {
   margin: 0;
@@ -19,7 +20,8 @@
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: rgba(26, 26, 26, 0.9); 
+  background: rgba(26, 26, 26, 0.9);
+  backdrop-filter: blur(5px); /* Blur the entire background */
 }
 
 .background-layer {
@@ -63,22 +65,21 @@
   top: 0;
   padding: 1rem 2rem;
   background: linear-gradient(to bottom, rgba(34, 34, 34, 0.95), rgba(26, 26, 26, 0.9));
-  backdrop-filter: blur(15px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.05);
   z-index: 50;
   transition: all 0.3s ease;
 }
 
 .navbar:hover {
-  background: linear-gradient(to bottom, rgba(40, 40, 40, 0.95), rgba(30, 30, 30, 0.9));
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.08);
-  transform: scale(1.01);
+  background: linear-gradient(to bottom, rgba(50, 50, 50, 0.95), rgba(40, 40, 40, 0.9));
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5), inset 0 0 25px rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px); /* Slight lift for highlight */
 }
 
 .nav-container {
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   max-width: 80rem;
   margin: 0 auto;
 }
@@ -90,24 +91,28 @@
 }
 
 .logo-icon {
-  color: #a0a0a0;
+  color: transparent; /* For gradient */
+  background: linear-gradient(to right, #a0a0a0, #ffffff, #d0d0d0);
+  -webkit-background-clip: text;
+  background-clip: text;
   width: 2rem;
   height: 2rem;
 }
 
 .brand-name {
-  font-size: 1.5rem;
-  font-weight: 600;
-  background: linear-gradient(to right, #a0a0a0, #d0d0d0);
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #a0a0a0, #ffffff);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 2rem; 
+  gap: 2rem;
 }
 
 .nav-links {
@@ -188,10 +193,20 @@
   background: rgba(90, 90, 90, 0.9);
 }
 
-.hero {
-  padding: 8rem 2rem 5rem;
+.highlighted-section {
+  position: relative;
+  z-index: 20; /* Bring to front */
+  background: rgba(40, 40, 40, 0.9); /* Translucent effect */
+  backdrop-filter: blur(10px); /* Slight blur for section itself */
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.1); /* Glow effect */
+  margin: 2rem auto;
   max-width: 80rem;
-  margin: 0 auto;
+}
+
+.hero {
+  padding: 8rem 0 5rem;
 }
 
 .hero-content {
@@ -208,13 +223,18 @@
 }
 
 .hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
+  font-size: 4rem;
+  font-weight: 800;
   line-height: 1.1;
+  background: linear-gradient(to right, #b0b0b0, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .highlight {
-  background: linear-gradient(to right, #a0a0a0, #d0d0d0);
+  background: linear-gradient(to right, #a0a0a0, #e0e0e0);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -302,8 +322,7 @@
 }
 
 .features-section {
-  padding: 6rem 2rem;
-  background: rgba(26, 26, 26, 0.9);
+  padding: 6rem 0;
 }
 
 .section-content {
@@ -322,8 +341,13 @@
 }
 
 .section-title {
-  font-size: 2.75rem;
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #b0b0b0, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .section-description {
@@ -363,8 +387,7 @@
 }
 
 .how-it-works-section {
-  padding: 6rem 2rem;
-  background: rgba(30, 30, 30, 0.9);
+  padding: 6rem 0;
 }
 
 .steps {
@@ -411,8 +434,7 @@
 }
 
 .cta-section {
-  padding: 6rem 2rem;
-  background: rgba(20, 20, 20, 0.9);
+  padding: 6rem 0;
 }
 
 .cta-content {
@@ -425,8 +447,13 @@
 }
 
 .cta-title {
-  font-size: 2.75rem;
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #b0b0b0, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .cta-description {
@@ -462,8 +489,7 @@
 }
 
 .footer {
-  padding: 4rem 2rem;
-  background: rgba(26, 26, 26, 0.9);
+  padding: 4rem 0;
 }
 
 .footer-content {
@@ -490,14 +516,22 @@
 }
 
 .footer-logo {
-  color: #a0a0a0;
+  color: transparent;
+  background: linear-gradient(to right, #a0a0a0, #ffffff, #d0d0d0);
+  -webkit-background-clip: text;
+  background-clip: text;
   width: 1.5rem;
   height: 1.5rem;
 }
 
 .footer-brand-name {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #a0a0a0, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .footer-description {

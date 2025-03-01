@@ -63,7 +63,7 @@ const DarkwebDetection = () => {
           </div>
         </nav>
 
-        <section className="hero">
+        <section className="hero highlighted-section">
           <div className="hero-content">
             <div className="hero-text">
               <h1 className="hero-title">
@@ -98,7 +98,7 @@ const DarkwebDetection = () => {
           </div>
         </section>
 
-        <section id="features" className="features-section">
+        <section id="features" className="features-section highlighted-section">
           <div className="section-content">
             <div className="section-header">
               <h2 className="section-title">Advanced Threat Detection Features</h2>
@@ -141,7 +141,7 @@ const DarkwebDetection = () => {
           </div>
         </section>
 
-        <section id="how-it-works" className="how-it-works-section">
+        <section id="how-it-works" className="how-it-works-section highlighted-section">
           <div className="section-content">
             <div className="section-header">
               <h2 className="section-title">How DarkGuard Works</h2>
@@ -174,7 +174,7 @@ const DarkwebDetection = () => {
           </div>
         </section>
 
-        <section className="cta-section">
+        <section className="cta-section highlighted-section">
           <div className="cta-content">
             <h2 className="cta-title">Secure Your Digital Assets Today</h2>
             <p className="cta-description">
@@ -187,7 +187,7 @@ const DarkwebDetection = () => {
           </div>
         </section>
 
-        <footer className="footer">
+        <footer className="footer highlighted-section">
           <div className="footer-content">
             <div className="footer-grid">
               <div className="footer-brand">
