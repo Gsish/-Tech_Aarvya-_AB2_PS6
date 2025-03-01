@@ -618,6 +618,36 @@ body {
   color: #666666;
 }
 
+/* About Us Section */
+.about-us-section {
+  padding: 4rem 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-us-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.about-us-content p {
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #CCCCCC;
+  line-height: 1.6;
+}
+
+.light-theme .about-us-content p {
+  color: #666666;
+}
+
 /* Footer Styles */
 .footer-component {
   padding: 4rem 0;
