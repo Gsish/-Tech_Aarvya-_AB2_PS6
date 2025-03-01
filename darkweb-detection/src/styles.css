@@ -764,3 +764,6 @@ body {
   color: #FFFFFF;
 }
 
+.light-theme .icon {
+  color: #333333;
+}
