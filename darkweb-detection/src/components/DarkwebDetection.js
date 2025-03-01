@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import NavLink from './NavLink';
 import FeatureCard from './FeatureCard';
 import StepItem from './StepItem';
+import NetworkGridAnimation from './NetworkGridAnimation';
 
 const DarkwebDetection = () => {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -83,6 +84,13 @@ const DarkwebDetection = () => {
     })
   };
 
+  const iconPulseVariants = {
+    pulse: {
+      scale: [1, 1.2, 1],
+      transition: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+    }
+  };
+
   return (
     <div className={`container ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
       <div className="background">
@@ -92,24 +100,10 @@ const DarkwebDetection = () => {
             <div className="glossy-layer"></div>
             <div className="grid-overlay"></div>
             <div className="reflection"></div>
-            <svg className="cyber-grid" width="100%" height="100%">
-              <defs>
-                <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
-                  <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="1"/>
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
-              <circle cx="10%" cy="20%" r="5" fill="rgba(255, 255, 255, 0.3)" className="node node-1" />
-              <circle cx="80%" cy="30%" r="5" fill="rgba(255, 255, 255, 0.3)" className="node node-2" />
-              <circle cx="40%" cy="70%" r="5" fill="rgba(255, 255, 255, 0.3)" className="node node-3" />
-              <line x1="10%" y1="20%" x2="80%" y2="30%" stroke="rgba(255, 255, 255, 0.2)" strokeWidth="1" className="line line-1" />
-              <line x1="80%" y1="30%" x2="40%" y2="70%" stroke="rgba(255, 255, 255, 0.2)" strokeWidth="1" className="line line-2" />
-              <line x1="40%" y1="70%" x2="10%" y2="20%" stroke="rgba(255, 255, 255, 0.2)" strokeWidth="1" className="line line-3" />
-            </svg>
           </>
         )}
       </div>
-
+      <NetworkGridAnimation isDarkTheme={isDarkTheme} />
       <div className="content">
         <nav className="navbar highlighted-component navbar-component">
           <div className="nav-container">
@@ -168,7 +162,13 @@ const DarkwebDetection = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <div className="feature-box">
-                      <div className="feature-icon">{feature.icon}</div>
+                      <motion.div 
+                        className="feature-icon"
+                        variants={isDarkTheme ? iconPulseVariants : undefined}
+                        animate={isDarkTheme ? "pulse" : undefined}
+                      >
+                        {feature.icon}
+                      </motion.div>
                       <h3 className="feature-title">{feature.title}</h3>
                       <p className="feature-description">{feature.description}</p>
                     </div>
@@ -204,7 +204,14 @@ const DarkwebDetection = () => {
                   variants={featureCardVariants}
                 >
                   <FeatureCard 
-                    icon={card.icon}
+                    icon={
+                      <motion.div
+                        variants={isDarkTheme ? iconPulseVariants : undefined}
+                        animate={isDarkTheme ? "pulse" : undefined}
+                      >
+                        {card.icon}
+                      </motion.div>
+                    }
                     title={card.title}
                     description={card.description}
                   />
