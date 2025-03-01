@@ -48,15 +48,17 @@ const DarkwebDetection = () => {
               <Shield className="logo-icon" />
               <h1 className="brand-name">DarkGuard</h1>
             </div>
-            <div className="nav-links">
-              <NavLink href="#features">Features</NavLink>
-              <NavLink href="#how-it-works">How It Works</NavLink>
-              <NavLink href="#pricing">Pricing</NavLink>
-              <NavLink href="#about">About</NavLink>
-            </div>
-            <div className="nav-buttons">
-              <button className="login-btn">Login</button>
-              <button className="start-btn">Get Started</button>
+            <div className="nav-right">
+              <div className="nav-links">
+                <NavLink href="#features">Features</NavLink>
+                <NavLink href="#how-it-works">How It Works</NavLink>
+                <NavLink href="#pricing">Pricing</NavLink>
+                <NavLink href="#about">About</NavLink>
+              </div>
+              <div className="nav-buttons">
+                <button className="login-btn">Login</button>
+                <button className="start-btn">Get Started</button>
+              </div>
             </div>
           </div>
         </nav>

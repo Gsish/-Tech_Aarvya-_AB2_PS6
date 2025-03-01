@@ -78,10 +78,9 @@
 .nav-container {
   display: flex;
   align-items: center;
-  gap: 2rem; 
+  justify-content: space-between; 
   max-width: 80rem;
   margin: 0 auto;
-  justify-content: flex-start; 
 }
 
 .nav-brand {
@@ -103,6 +102,12 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem; 
 }
 
 .nav-links {
