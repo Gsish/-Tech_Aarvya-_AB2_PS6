@@ -16,19 +16,19 @@ const DarkwebDetection = () => {
 
   const features = [
     {
-      title: "Real-time Thread Detection",
+      title: "Real-time Threat Detection",
       description: "Identify darkweb threats as they emerge with our advanced AI-powered detection system.",
-      icon: <AlertTriangle className="icon-red" />
+      icon: <AlertTriangle className="icon-gray" />
     },
     {
       title: "Proactive Security Measures",
-      description: "Stay one step ahead of threats with predictive analysis and proactive security protocols.",
-      icon: <Shield className="icon-blue" />
+      description: "Stay ahead of threats with predictive analysis and proactive security protocols.",
+      icon: <Shield className="icon-gray" />
     },
     {
       title: "Comprehensive Monitoring",
       description: "Monitor multiple darkweb channels simultaneously with our powerful scanning technology.",
-      icon: <Search className="icon-purple" />
+      icon: <Search className="icon-gray" />
     }
   ];
 
@@ -43,21 +43,21 @@ const DarkwebDetection = () => {
 
       <div className="content">
         <nav className="navbar">
-          <div className="nav-brand">
-            <Shield className="logo-icon" />
-            <h1 className="brand-name">DarkGuard</h1>
-          </div>
-
-          <div className="nav-links">
-            <NavLink href="#features">Features</NavLink>
-            <NavLink href="#how-it-works">How It Works</NavLink>
-            <NavLink href="#pricing">Pricing</NavLink>
-            <NavLink href="#about">About</NavLink>
-          </div>
-
-          <div className="nav-buttons">
-            <button className="login-btn">Login</button>
-            <button className="start-btn">Get Started</button>
+          <div className="nav-container">
+            <div className="nav-brand">
+              <Shield className="logo-icon" />
+              <h1 className="brand-name">DarkGuard</h1>
+            </div>
+            <div className="nav-links">
+              <NavLink href="#features">Features</NavLink>
+              <NavLink href="#how-it-works">How It Works</NavLink>
+              <NavLink href="#pricing">Pricing</NavLink>
+              <NavLink href="#about">About</NavLink>
+            </div>
+            <div className="nav-buttons">
+              <button className="login-btn">Login</button>
+              <button className="start-btn">Get Started</button>
+            </div>
           </div>
         </nav>
 
@@ -106,34 +106,34 @@ const DarkwebDetection = () => {
             </div>
             <div className="feature-grid">
               <FeatureCard 
-                icon={<AlertTriangle className="icon-red" />}
+                icon={<AlertTriangle className="icon-gray" />}
                 title="Real-time Detection"
-                description="Identify emerging threats as they appear with millisecond response times."
+                description="Identify emerging threats with millisecond response times."
               />
               <FeatureCard 
-                icon={<Lock className="icon-green" />}
+                icon={<Lock className="icon-gray" />}
                 title="End-to-End Encryption"
-                description="All your data and monitoring activities are secured with enterprise-grade encryption."
+                description="Secure your data with enterprise-grade encryption."
               />
               <FeatureCard 
-                icon={<Eye className="icon-purple" />}
+                icon={<Eye className="icon-gray" />}
                 title="24/7 Monitoring"
-                description="Continuous scanning across darkweb forums, marketplaces, and chat channels."
+                description="Continuous scanning across darkweb forums and channels."
               />
               <FeatureCard 
-                icon={<Server className="icon-blue" />}
+                icon={<Server className="icon-gray" />}
                 title="Cloud Infrastructure"
-                description="Scalable architecture to handle any volume of monitoring requirements."
+                description="Scalable architecture for all monitoring needs."
               />
               <FeatureCard 
-                icon={<Shield className="icon-yellow" />}
+                icon={<Shield className="icon-gray" />}
                 title="Threat Intelligence"
-                description="AI-powered analysis provides actionable intelligence about potential threats."
+                description="AI-powered analysis for actionable insights."
               />
               <FeatureCard 
-                icon={<Search className="icon-red" />}
+                icon={<Search className="icon-gray" />}
                 title="Custom Alerts"
-                description="Configure personalized notification systems based on your security needs."
+                description="Personalized notifications based on your security needs."
               />
             </div>
           </div>
@@ -144,29 +144,29 @@ const DarkwebDetection = () => {
             <div className="section-header">
               <h2 className="section-title">How DarkGuard Works</h2>
               <p className="section-description">
-                Our advanced platform employs a multi-layered approach to darkweb monitoring and threat detection.
+                Our platform employs a multi-layered approach to darkweb monitoring and threat detection.
               </p>
             </div>
             <div className="steps">
               <StepItem 
                 number="01"
-                title="Advanced Scanning Technology"
-                description="Our AI-powered crawlers navigate the darkweb continuously, accessing forums, marketplaces, and communication channels to collect data on potential threats."
+                title="Advanced Scanning"
+                description="AI-powered crawlers continuously navigate the darkweb to collect threat data."
               />
               <StepItem 
                 number="02"
-                title="Threat Analysis & Classification"
-                description="Sophisticated machine learning algorithms analyze collected data to identify and classify threats based on severity, relevance, and potential impact."
+                title="Threat Analysis"
+                description="Machine learning algorithms classify threats based on severity and impact."
               />
               <StepItem 
                 number="03"
-                title="Real-time Alerts & Reporting"
-                description="When threats are detected, the system immediately notifies your security team through customizable alert channels and generates detailed reports."
+                title="Real-time Alerts"
+                description="Instant notifications and detailed reports for detected threats."
               />
               <StepItem 
                 number="04"
-                title="Proactive Security Response"
-                description="Our platform provides actionable recommendations to help your team respond effectively to identified threats and vulnerabilities."
+                title="Proactive Response"
+                description="Actionable recommendations to mitigate identified threats."
               />
             </div>
           </div>
@@ -174,12 +174,12 @@ const DarkwebDetection = () => {
 
         <section className="cta-section">
           <div className="cta-content">
-            <h2 className="cta-title">Ready to Secure Your Digital Assets?</h2>
+            <h2 className="cta-title">Secure Your Digital Assets Today</h2>
             <p className="cta-description">
-              Join thousands of organizations that trust DarkGuard for their darkweb threat detection needs.
+              Join thousands of organizations trusting DarkGuard for darkweb threat detection.
             </p>
             <div className="cta-buttons">
-              <button className="cta-trial-btn">Start Your Free Trial</button>
+              <button className="cta-trial-btn">Start Free Trial</button>
               <button className="cta-demo-btn">Schedule a Demo</button>
             </div>
           </div>
@@ -194,7 +194,7 @@ const DarkwebDetection = () => {
                   <h2 className="footer-brand-name">DarkGuard</h2>
                 </div>
                 <p className="footer-description">
-                  Advanced darkweb threat detection and monitoring for enterprises and security teams.
+                  Advanced darkweb threat detection and monitoring for enterprises.
                 </p>
               </div>
               <div>
