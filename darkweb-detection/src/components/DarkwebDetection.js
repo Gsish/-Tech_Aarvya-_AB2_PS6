@@ -65,6 +65,7 @@ const DarkwebDetection = () => {
               <div className="nav-links">
                 <NavLink href="#features">Features</NavLink>
                 <NavLink href="#how-it-works">How It Works</NavLink>
+                <NavLink href="#about-us">About Us</NavLink>
               </div>
               <div className="nav-buttons">
                 <button className="login-btn">Login</button>
@@ -168,6 +169,28 @@ const DarkwebDetection = () => {
                   description={step.description}
                 />
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="about-us" className="about-us-section highlighted-component about-us-component">
+          <div className="section-content">
+            <div className="section-header">
+              <h2 className="section-title">About Us</h2>
+              <p className="section-description">
+                Learn more about DarkGuard and our mission to secure the digital world.
+              </p>
+            </div>
+            <div className="about-us-content">
+              <p>
+                DarkGuard is a cutting-edge cybersecurity platform developed by a team of experts dedicated to protecting enterprises from the ever-evolving threats of the dark web. Launched in 2025, our project leverages advanced artificial intelligence and machine learning algorithms to provide real-time threat detection, comprehensive monitoring, and proactive security measures.
+              </p>
+              <p>
+                Our mission is to safeguard your digital assets by identifying and mitigating risks before they escalate into breaches. With a robust cloud infrastructure and end-to-end encryption, DarkGuard ensures unparalleled security and scalability. We continuously scan darkweb forums, marketplaces, and hidden networks to deliver actionable threat intelligence and custom alerts tailored to your organization's needs.
+              </p>
+              <p>
+                Backed by years of research and a passion for innovation, DarkGuard stands at the forefront of cybersecurity, empowering businesses to stay ahead of cybercriminals. Our team comprises industry veterans, data scientists, and security analysts committed to excellence and customer success.
+              </p>
             </div>
           </div>
         </section>
