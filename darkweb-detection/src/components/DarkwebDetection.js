@@ -5,43 +5,17 @@ import NavLink from './NavLink';
 import FeatureCard from './FeatureCard';
 import StepItem from './StepItem';
 import NetworkGridAnimation from './NetworkGridAnimation';
+import CyberObjectsAnimation from './CyberObjectsAnimation';
 
 const DarkwebDetection = () => {
   const [activeFeature, setActiveFeature] = useState(0);
-  const [isFeaturesVisible, setIsFeaturesVisible] = useState(false);
-  const [isHowItWorksVisible, setIsHowItWorksVisible] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveFeature((prev) => (prev + 1) % 3);
-    }, 1000); // Fast cycling (1s)
+    }, 1000);
     return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target.id === 'features') {
-            setIsFeaturesVisible(entry.isIntersecting);
-          } else if (entry.target.id === 'how-it-works') {
-            setIsHowItWorksVisible(entry.isIntersecting);
-          }
-        });
-      },
-      { threshold: 0.1 } // Trigger when 10% of the section is visible
-    );
-
-    const featuresSection = document.getElementById('features');
-    const howItWorksSection = document.getElementById('how-it-works');
-    if (featuresSection) observer.observe(featuresSection);
-    if (howItWorksSection) observer.observe(howItWorksSection);
-
-    return () => {
-      if (featuresSection) observer.unobserve(featuresSection);
-      if (howItWorksSection) observer.unobserve(howItWorksSection);
-    };
   }, []);
 
   const toggleTheme = () => {
@@ -66,31 +40,6 @@ const DarkwebDetection = () => {
     }
   ];
 
-  const featureCardVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: (i) => ({
-      opacity: 1,
-      scale: 1,
-      transition: { delay: i * 0.2, duration: 0.5, ease: "easeOut" }
-    })
-  };
-
-  const stepItemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.3, duration: 0.6, ease: "easeOut" }
-    })
-  };
-
-  const iconPulseVariants = {
-    pulse: {
-      scale: [1, 1.2, 1],
-      transition: { duration: 2, repeat: Infinity, ease: "easeInOut" }
-    }
-  };
-
   return (
     <div className={`container ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
       <div className="background">
@@ -104,6 +53,7 @@ const DarkwebDetection = () => {
         )}
       </div>
       <NetworkGridAnimation isDarkTheme={isDarkTheme} />
+      <CyberObjectsAnimation isDarkTheme={isDarkTheme} />
       <div className="content">
         <nav className="navbar highlighted-component navbar-component">
           <div className="nav-container">
@@ -144,12 +94,7 @@ const DarkwebDetection = () => {
                 <button className="demo-btn">Watch Demo</button>
               </div>
             </div>
-            <motion.div 
-              className="hero-image"
-              initial={{ boxShadow: isDarkTheme ? "0 0 20px rgba(255, 255, 255, 0.3)" : "0 0 20px rgba(0, 0, 0, 0.3)" }}
-              animate={{ boxShadow: isDarkTheme ? "0 0 30px rgba(255, 255, 255, 0.5)" : "0 0 30px rgba(0, 0, 0, 0.5)" }}
-              transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-            >
+            <div className="hero-image">
               <div className="image-overlay"></div>
               <AnimatePresence>
                 {features.map((feature, index) => (
@@ -162,20 +107,14 @@ const DarkwebDetection = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <div className="feature-box">
-                      <motion.div 
-                        className="feature-icon"
-                        variants={isDarkTheme ? iconPulseVariants : undefined}
-                        animate={isDarkTheme ? "pulse" : undefined}
-                      >
-                        {feature.icon}
-                      </motion.div>
+                      <div className="feature-icon">{feature.icon}</div>
                       <h3 className="feature-title">{feature.title}</h3>
                       <p className="feature-description">{feature.description}</p>
                     </div>
                   </motion.div>
                 ))}
               </AnimatePresence>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -196,26 +135,12 @@ const DarkwebDetection = () => {
                 { icon: <FaShieldAlt className="icon" />, title: "Threat Intelligence", description: "AI-powered analysis for actionable insights." },
                 { icon: <FaSearch className="icon" />, title: "Custom Alerts", description: "Personalized notifications based on your security needs." }
               ].map((card, index) => (
-                <motion.div
+                <FeatureCard 
                   key={index}
-                  custom={index}
-                  initial="hidden"
-                  animate={isFeaturesVisible ? "visible" : "hidden"}
-                  variants={featureCardVariants}
-                >
-                  <FeatureCard 
-                    icon={
-                      <motion.div
-                        variants={isDarkTheme ? iconPulseVariants : undefined}
-                        animate={isDarkTheme ? "pulse" : undefined}
-                      >
-                        {card.icon}
-                      </motion.div>
-                    }
-                    title={card.title}
-                    description={card.description}
-                  />
-                </motion.div>
+                  icon={card.icon}
+                  title={card.title}
+                  description={card.description}
+                />
               ))}
             </div>
           </div>
@@ -236,19 +161,12 @@ const DarkwebDetection = () => {
                 { number: "03", title: "Real-time Alerts", description: "Instant notifications and detailed reports for detected threats." },
                 { number: "04", title: "Proactive Response", description: "Actionable recommendations to mitigate identified threats." }
               ].map((step, index) => (
-                <motion.div
+                <StepItem 
                   key={index}
-                  custom={index}
-                  initial="hidden"
-                  animate={isHowItWorksVisible ? "visible" : "hidden"}
-                  variants={stepItemVariants}
-                >
-                  <StepItem 
-                    number={step.number}
-                    title={step.title}
-                    description={step.description}
-                  />
-                </motion.div>
+                  number={step.number}
+                  title={step.title}
+                  description={step.description}
+                />
               ))}
             </div>
           </div>
