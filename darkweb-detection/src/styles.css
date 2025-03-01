@@ -137,10 +137,42 @@
 
 .features-component {
   padding: 6rem 2rem;
+  position: relative;
+}
+
+/* Continuous Glow for Advanced Threat Detection Features */
+.features-component::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZ2xvdyIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6cmdiYSgyNTUsIDI1NSwgMjU1LCAwLjMpOyIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjpyZ2JhKDI1NSwgMjU1LCAyNTUsIDApOyIgLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ2xvdykiIC8+Cjwvc3ZnPg==');
+  background-size: cover;
+  animation: glowPulse 3s infinite ease-in-out;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .how-it-works-component {
   padding: 6rem 2rem;
+  position: relative;
+}
+
+/* Continuous Glow for How DarkGuard Works (if desired, optional) */
+.how-it-works-component::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZ2xvdyIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6cmdiYSgyNTUsIDI1NSwgMjU1LCAwLjMpOyIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjpyZ2JhKDI1NSwgMjU1LCAyNTUsIDApOyIgLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ2xvdykiIC8+Cjwvc3ZnPg==');
+  background-size: cover;
+  animation: glowPulse 3s infinite ease-in-out;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .footer-component {
@@ -346,11 +378,8 @@
   border-radius: 1rem;
   max-width: 32rem;
   transition: all 0.3s ease;
-}
-
-.feature-box:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
 .feature-icon {
@@ -405,15 +434,12 @@
   padding: 0 2rem;
 }
 
-/* Feature Card Styles with Animation */
 .feature-card {
   padding: 2rem;
   background: rgba(0, 0, 0, 0.9);
   border-radius: 1rem;
-  transition: all 0.2s ease;
   position: relative;
   overflow: hidden;
-  opacity: 0; /* Start hidden for animation */
 }
 
 .feature-card::before {
@@ -428,51 +454,6 @@
   animation: glowPulse 3s infinite ease-in-out;
   pointer-events: none;
   z-index: -1;
-}
-
-/* Feature Card Animations */
-.animate-from-left {
-  animation: slideFromLeft 0.5s ease-out forwards;
-}
-
-.animate-from-right {
-  animation: slideFromRight 0.5s ease-out forwards;
-}
-
-.animate-from-top {
-  animation: slideFromTop 0.5s ease-out forwards;
-}
-
-.animate-from-bottom {
-  animation: slideFromBottom 0.5s ease-out forwards;
-}
-
-.animate-from-left-delay {
-  animation: slideFromLeft 0.5s ease-out 0.2s forwards;
-}
-
-.animate-from-right-delay {
-  animation: slideFromRight 0.5s ease-out 0.2s forwards;
-}
-
-@keyframes slideFromLeft {
-  0% { transform: translateX(-100%); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideFromRight {
-  0% { transform: translateX(100%); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideFromTop {
-  0% { transform: translateY(-100%); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes slideFromBottom {
-  0% { transform: translateY(100%); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
 }
 
 .feature-card:hover {

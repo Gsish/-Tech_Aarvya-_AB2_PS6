@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AlertTriangle, Shield, Search, Lock, Eye, Server, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import NavLink from './NavLink';
 import FeatureCard from './FeatureCard';
 import StepItem from './StepItem';
@@ -7,6 +8,7 @@ import StepItem from './StepItem';
 const DarkwebDetection = () => {
   const [activeFeature, setActiveFeature] = useState(0);
   const [isFeaturesVisible, setIsFeaturesVisible] = useState(false);
+  const [isHowItWorksVisible, setIsHowItWorksVisible] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,8 +21,10 @@ const DarkwebDetection = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsFeaturesVisible(true);
+          if (entry.target.id === 'features') {
+            setIsFeaturesVisible(entry.isIntersecting);
+          } else if (entry.target.id === 'how-it-works') {
+            setIsHowItWorksVisible(entry.isIntersecting);
           }
         });
       },
@@ -28,10 +32,13 @@ const DarkwebDetection = () => {
     );
 
     const featuresSection = document.getElementById('features');
+    const howItWorksSection = document.getElementById('how-it-works');
     if (featuresSection) observer.observe(featuresSection);
+    if (howItWorksSection) observer.observe(howItWorksSection);
 
     return () => {
       if (featuresSection) observer.unobserve(featuresSection);
+      if (howItWorksSection) observer.unobserve(howItWorksSection);
     };
   }, []);
 
@@ -52,6 +59,24 @@ const DarkwebDetection = () => {
       icon: <Search className="icon-white" />
     }
   ];
+
+  const featureCardVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: (i) => ({
+      opacity: 1,
+      scale: 1,
+      transition: { delay: i * 0.2, duration: 0.5, ease: "easeOut" }
+    })
+  };
+
+  const stepItemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.3, duration: 0.6, ease: "easeOut" }
+    })
+  };
 
   return (
     <div className="container">
@@ -113,21 +138,32 @@ const DarkwebDetection = () => {
                 <button className="demo-btn">Watch Demo</button>
               </div>
             </div>
-            <div className="hero-image">
+            <motion.div 
+              className="hero-image"
+              initial={{ boxShadow: "0 0 20px rgba(255, 255, 255, 0.3)" }}
+              animate={{ boxShadow: "0 0 30px rgba(255, 255, 255, 0.5)" }}
+              transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+            >
               <div className="image-overlay"></div>
-              {features.map((feature, index) => (
-                <div 
-                  key={index}
-                  className={`feature-highlight ${activeFeature === index ? 'active' : ''}`}
-                >
-                  <div className="feature-box">
-                    <div className="feature-icon">{feature.icon}</div>
-                    <h3 className="feature-title">{feature.title}</h3>
-                    <p className="feature-description">{feature.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+              <AnimatePresence>
+                {features.map((feature, index) => (
+                  <motion.div 
+                    key={index}
+                    className={`feature-highlight ${activeFeature === index ? 'active' : ''}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: activeFeature === index ? 1 : 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="feature-box">
+                      <div className="feature-icon">{feature.icon}</div>
+                      <h3 className="feature-title">{feature.title}</h3>
+                      <p className="feature-description">{feature.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
           </div>
         </section>
 
@@ -140,42 +176,28 @@ const DarkwebDetection = () => {
               </p>
             </div>
             <div className="feature-grid">
-              <FeatureCard 
-                icon={<AlertTriangle className="icon-white" />}
-                title="Real-time Detection"
-                description="Identify emerging threats with millisecond response times."
-                animationClass={isFeaturesVisible ? 'animate-from-left' : ''}
-              />
-              <FeatureCard 
-                icon={<Lock className="icon-white" />}
-                title="End-to-End Encryption"
-                description="Secure your data with enterprise-grade encryption."
-                animationClass={isFeaturesVisible ? 'animate-from-right' : ''}
-              />
-              <FeatureCard 
-                icon={<Eye className="icon-white" />}
-                title="24/7 Monitoring"
-                description="Continuous scanning across darkweb forums and channels."
-                animationClass={isFeaturesVisible ? 'animate-from-top' : ''}
-              />
-              <FeatureCard 
-                icon={<Server className="icon-white" />}
-                title="Cloud Infrastructure"
-                description="Scalable architecture for all monitoring needs."
-                animationClass={isFeaturesVisible ? 'animate-from-bottom' : ''}
-              />
-              <FeatureCard 
-                icon={<Shield className="icon-white" />}
-                title="Threat Intelligence"
-                description="AI-powered analysis for actionable insights."
-                animationClass={isFeaturesVisible ? 'animate-from-left-delay' : ''}
-              />
-              <FeatureCard 
-                icon={<Search className="icon-white" />}
-                title="Custom Alerts"
-                description="Personalized notifications based on your security needs."
-                animationClass={isFeaturesVisible ? 'animate-from-right-delay' : ''}
-              />
+              {[
+                { icon: <AlertTriangle className="icon-white" />, title: "Real-time Detection", description: "Identify emerging threats with millisecond response times." },
+                { icon: <Lock className="icon-white" />, title: "End-to-End Encryption", description: "Secure your data with enterprise-grade encryption." },
+                { icon: <Eye className="icon-white" />, title: "24/7 Monitoring", description: "Continuous scanning across darkweb forums and channels." },
+                { icon: <Server className="icon-white" />, title: "Cloud Infrastructure", description: "Scalable architecture for all monitoring needs." },
+                { icon: <Shield className="icon-white" />, title: "Threat Intelligence", description: "AI-powered analysis for actionable insights." },
+                { icon: <Search className="icon-white" />, title: "Custom Alerts", description: "Personalized notifications based on your security needs." }
+              ].map((card, index) => (
+                <motion.div
+                  key={index}
+                  custom={index}
+                  initial="hidden"
+                  animate={isFeaturesVisible ? "visible" : "hidden"}
+                  variants={featureCardVariants}
+                >
+                  <FeatureCard 
+                    icon={card.icon}
+                    title={card.title}
+                    description={card.description}
+                  />
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
@@ -189,26 +211,26 @@ const DarkwebDetection = () => {
               </p>
             </div>
             <div className="steps">
-              <StepItem 
-                number="01"
-                title="Advanced Scanning"
-                description="AI-powered crawlers continuously navigate the darkweb to collect threat data."
-              />
-              <StepItem 
-                number="02"
-                title="Threat Analysis"
-                description="Machine learning algorithms classify threats based on severity and impact."
-              />
-              <StepItem 
-                number="03"
-                title="Real-time Alerts"
-                description="Instant notifications and detailed reports for detected threats."
-              />
-              <StepItem 
-                number="04"
-                title="Proactive Response"
-                description="Actionable recommendations to mitigate identified threats."
-              />
+              {[
+                { number: "01", title: "Advanced Scanning", description: "AI-powered crawlers continuously navigate the darkweb to collect threat data." },
+                { number: "02", title: "Threat Analysis", description: "Machine learning algorithms classify threats based on severity and impact." },
+                { number: "03", title: "Real-time Alerts", description: "Instant notifications and detailed reports for detected threats." },
+                { number: "04", title: "Proactive Response", description: "Actionable recommendations to mitigate identified threats." }
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  custom={index}
+                  initial="hidden"
+                  animate={isHowItWorksVisible ? "visible" : "hidden"}
+                  variants={stepItemVariants}
+                >
+                  <StepItem 
+                    number={step.number}
+                    title={step.title}
+                    description={step.description}
+                  />
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
