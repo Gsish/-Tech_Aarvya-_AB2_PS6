@@ -4,4 +4,4 @@
 
 <h4>Project name : - <b>Thread Gaurd</b></h4>
 <h5> Problem statement number 06</h5>
-<p>we implement the react.js based website which is detect the thread in darkweb </p>
+<p>we implement the python based web app which will detect the thread in darkweb </p>
